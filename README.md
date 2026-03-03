@@ -5,7 +5,7 @@
 **Project Name:** The Tiny Fox Adventure  
 **Platform:** Unity (2D)  
 **Genre:** Platformer / Action  
-**Author:** [Your Name]  
+**Author:** Ana Narmania  
 **Course:** IT Step Academy – Game Development (C#, Unity) Sept 2025 - March 2026
 **Duration:** 6 months  
 **Project Context:** Final project for the second step of the program, showcasing skills learned in C# programming and Unity fundamentals.  
