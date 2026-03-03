@@ -88,4 +88,7 @@ public class SoundManager : MonoBehaviour
         _sfxAudioSource.PlayOneShot(_enemyDeathSound);
     }
 
+    public float BackgroundMusicVolume => _backgroundMusicAudioSource.volume;
+    public float SFXVolume => _sfxAudioSource.volume;
+
 }
