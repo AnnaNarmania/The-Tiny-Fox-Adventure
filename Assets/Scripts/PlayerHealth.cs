@@ -30,7 +30,7 @@ public class PlayerHealth : MonoBehaviour
 
     void Update()
 {
-    if (transform.position.y <= -5f)
+    if (transform.position.y <= -9f)
     {
         Die();
     }
@@ -101,6 +101,7 @@ public class PlayerHealth : MonoBehaviour
         gameOverUI.SetActive(true);
         Time.timeScale = 0f;
         SoundManager.Instance.PlayGameOverSound();
+        SoundManager.Instance.SetBackgroundMusicVolume(0f);
         Debug.Log(gameOverUI);
     }
 

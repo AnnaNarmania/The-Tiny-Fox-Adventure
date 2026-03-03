@@ -7,11 +7,13 @@ public class GameOverUI : MonoBehaviour
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SoundManager.Instance.SetBackgroundMusicVolume(1f);
     }
 
     public void MainMenu()
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene("MainMenu");
+        SoundManager.Instance.SetBackgroundMusicVolume(1f);
     }
 }

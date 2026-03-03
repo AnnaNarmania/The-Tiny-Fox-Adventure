@@ -33,6 +33,7 @@ public class CharacterController2D : MonoBehaviour
 	private void Awake()
 	{
 		m_Rigidbody2D = GetComponent<Rigidbody2D>();
+		m_Rigidbody2D.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
 
 		if (OnLandEvent == null)
 			OnLandEvent = new UnityEvent();
@@ -42,23 +43,20 @@ public class CharacterController2D : MonoBehaviour
 	}
 
 	private void FixedUpdate()
-	{
-		bool wasGrounded = m_Grounded;
-		m_Grounded = false;
+{
+    bool wasGrounded = m_Grounded;
+    m_Grounded = false;
 
-		// The player is grounded if a circlecast to the groundcheck position hits anything designated as ground
-		// This can be done using layers instead but Sample Assets will not overwrite your project settings.
-		Collider2D[] colliders = Physics2D.OverlapCircleAll(m_GroundCheck.position, k_GroundedRadius, m_WhatIsGround);
-		for (int i = 0; i < colliders.Length; i++)
-		{
-			if (colliders[i].gameObject != gameObject)
-			{
-				m_Grounded = true;
-				if (!wasGrounded)
-					OnLandEvent.Invoke();
-			}
-		}
-	}
+    // Cast a short ray downward to reliably detect ground
+    RaycastHit2D hit = Physics2D.Raycast(m_GroundCheck.position, Vector2.down, k_GroundedRadius + 0.1f, m_WhatIsGround);
+    if (hit.collider != null)
+    {
+        m_Grounded = true;
+        if (!wasGrounded)
+            OnLandEvent.Invoke();
+    }
+    
+}
 
 
 	public void Move(float move, bool crouch, bool jump)
